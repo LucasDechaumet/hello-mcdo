@@ -1,0 +1,88 @@
+<div class="parent-container">
+  <div class="information-container">
+    <p-fluid class="custom-fluid">
+      <div class="option-container">
+        <label for="amountOfHelloMcdo">Numéro de restaurant</label>
+        <p-inputnumber [(ngModel)]="mcdoNumber" min="0"> </p-inputnumber>
+      </div>
+      <div class="option-container">
+        <label for="amountOfHelloMcdo">Nombre d'Hello-Mcdo mensuel</label>
+        <p-inputnumber [(ngModel)]="amountOfHelloMcdo" min="0" [max]="3000">
+        </p-inputnumber>
+      </div>
+      <div class="datepicker-container">
+        <div class="option-container">
+          <label> Ouverture </label>
+          <p-datepicker [(ngModel)]="openingTime" [timeOnly]="true" />
+        </div>
+        <div class="option-container">
+          <label> Fermeture </label>
+          <p-datepicker [(ngModel)]="closingTime" [timeOnly]="true" />
+        </div>
+      </div>
+      <div class="option-container">
+        <label> Date fermeture exceptionelle </label>
+        <p-datepicker
+          [(ngModel)]="closingDate"
+          [minDate]="minDate"
+          [maxDate]="maxDate"
+          [readonlyInput]="true"
+          dateFormat="dd/mm/yy"
+        />
+      </div>
+      <p-accordion
+        expandIcon="pi pi-chevron-down"
+        collapseIcon="pi pi-chevron-up"
+      >
+        <p-accordion-panel value="0">
+          <p-accordion-header>Dates Enregistrées</p-accordion-header>
+          <p-accordion-content>
+            <div class="closingDate-container">
+              @for (date of closeDates; track date) {
+              <p>08/03/2025 12:38</p>
+              }
+            </div>
+          </p-accordion-content>
+        </p-accordion-panel>
+
+        <p-accordion-panel value="1">
+          <p-accordion-header>Zones de ciblage</p-accordion-header>
+          <p-accordion-content>
+            <div class="slider-container">
+              <div class="option-container">
+                <label>Salle sur place</label>
+                <p-slider [(ngModel)]="surplaceSlider" />
+              </div>
+              <div class="option-container">
+                <label>Salle à emporter</label>
+                <p-slider [(ngModel)]="emporterSlider" />
+              </div>
+              <div class="option-container">
+                <label>Drive</label>
+                <p-slider [(ngModel)]="driveSlider" />
+              </div>
+              <div class="option-container">
+                <label>Livraison à domicile</label>
+                <p-slider [(ngModel)]="livraisonSlider" />
+              </div>
+              <div class="option-container">
+                <label>Click & Collect</label>
+                <p-slider [(ngModel)]="clickCollectSlider" />
+              </div>
+            </div>
+          </p-accordion-content>
+        </p-accordion-panel>
+      </p-accordion>
+      <div class="button-container">
+        <p-button
+          label="Sauvegarder"
+          icon="pi pi-check"
+          [loading]="buttonLoading"
+          class="p-button-lg"
+          (onClick)="save()"
+          [fluid]="false"
+        />
+      </div>
+    </p-fluid>
+  </div>
+</div>

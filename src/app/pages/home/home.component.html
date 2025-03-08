@@ -1,0 +1,45 @@
+<div class="parent-container">
+  <p-button
+    label="Démarrer"
+    icon="pi pi-play"
+    [loading]="loading"
+    class="p-button-lg"
+    (onClick)="startScript()"
+  />
+
+  <p-accordion expandIcon="pi pi-chevron-down" collapseIcon="pi pi-chevron-up">
+    <p-accordion-panel value="0">
+      <p-accordion-header>Informations</p-accordion-header>
+      <p-accordion-content>
+        <div class="information-container">
+          @for (info of infoList; track info) {
+          <div class="information-item">
+            <span
+              class="status-circle"
+              [ngStyle]="{ backgroundColor: info.color }"
+            ></span>
+            <p>{{ info.text }}</p>
+          </div>
+          }
+        </div>
+      </p-accordion-content>
+    </p-accordion-panel>
+
+    <p-accordion-panel value="1">
+      <p-accordion-header>Statistiques</p-accordion-header>
+      <p-accordion-content>
+        <div class="information-container">
+          @for (stat of statsList; track stat) {
+          <div class="information-item">
+            <span
+              class="status-circle"
+              [ngStyle]="{ backgroundColor: stat.color }"
+            ></span>
+            <p>{{ stat.text }}</p>
+          </div>
+          }
+        </div>
+      </p-accordion-content>
+    </p-accordion-panel>
+  </p-accordion>
+</div>

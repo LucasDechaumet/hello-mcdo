@@ -1,0 +1,18 @@
+<div class="parent-container">
+  <div class="information-container">
+    <p-iconfield>
+      <p-inputicon styleClass="pi pi-user" />
+      <input type="text" pInputText placeholder="Nom d'utilisateur" />
+    </p-iconfield>
+    <p-iconfield>
+      <p-inputicon styleClass="pi pi-key" />
+      <input type="text" pInputText placeholder="Mot de Passe" />
+    </p-iconfield>
+    <p-button
+      label="Connexion"
+      icon="pi pi-sign-in"
+      [loading]="loading"
+      (onClick)="login()"
+    />
+  </div>
+</div>

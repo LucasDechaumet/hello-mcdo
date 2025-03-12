@@ -61,7 +61,7 @@ export class ParamComponent {
       this.buttonSaveLoading = false;
       this.messageService.add({
         severity: 'success',
-        summary: 'Sauvegardée',
+        summary: 'Sauvegarde réussie',
         detail: 'Votre configuration a bien été sauvegardée',
       });
     }, 2000);

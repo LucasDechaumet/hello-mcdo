@@ -3,12 +3,21 @@ import { ButtonModule } from 'primeng/button';
 import { AccordionModule } from 'primeng/accordion';
 import { TagModule } from 'primeng/tag';
 import { CommonModule } from '@angular/common';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, ButtonModule, AccordionModule, TagModule],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    AccordionModule,
+    TagModule,
+    ToastModule,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  providers: [MessageService],
 })
 export class HomeComponent {
   loading: boolean = false;
@@ -39,12 +48,17 @@ export class HomeComponent {
     },
   ];
 
-  constructor() {}
+  constructor(private messageService: MessageService) {}
 
   startScript() {
     this.loading = true;
     setTimeout(() => {
       this.loading = false;
-    }, 5000);
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Exécution réussie',
+        detail: `L'activation de votre machine a été effectuée avec succès`,
+      });
+    }, 2000);
   }
 }
